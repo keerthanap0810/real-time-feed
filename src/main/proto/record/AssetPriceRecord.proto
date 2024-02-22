@@ -1,0 +1,15 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "com.hugosave.intern.project.proto";
+option java_multiple_files = true;
+
+message AssetPriceRecord {
+  string asset_code = 1;
+  double value = 2;
+  double ask = 3;
+  double bid = 4;
+  string weight = 5;
+  string currency = 6;
+  google.protobuf.Timestamp timestamp = 7;
+}

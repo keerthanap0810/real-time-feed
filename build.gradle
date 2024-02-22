@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.1'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id "com.google.protobuf" version "0.9.4"
+}
+
+group = 'com.hugosave'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '21'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.19.4"
+    }
+}
+
+dependencies {
+    // Database
+    implementation "mysql:mysql-connector-java:8.0.31"
+    implementation "com.zaxxer:HikariCP:5.0.1"
+
+    // AWS
+    implementation 'com.amazonaws.secretsmanager:aws-secretsmanager-jdbc:2.0.2'
+    implementation "software.amazon.awssdk:bom:2.21.1"
+    implementation "software.amazon.awssdk:cognitoidentityprovider:2.20.9"
+    implementation "software.amazon.awssdk:licensemanager:2.5.40"
+    implementation "software.amazon.awssdk:rdsdata:2.20.9"
+    implementation "software.amazon.awssdk:secretsmanager:2.20.9"
+    implementation "software.amazon.awssdk:sqs:2.20.9"
+
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework:spring-aspects:4.3.18.RELEASE'
+    implementation 'org.springframework:spring-tx:6.1.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Protobuf
+    implementation 'com.google.protobuf:protobuf-java:3.25.0'
+    implementation "com.google.protobuf:protobuf-java-util:3.21.6"
+
+    testImplementation 'junit:junit:4.13.1'
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "com.hugosave.intern.project.proto";
+option java_multiple_files = true;
+
+message TransactionEntity {
+  string user_id = 1;
+  string transaction_id = 2;
+  string transaction_type = 3;
+  string status = 4;
+  double total_amount = 5;
+  string asset_code = 6;
+  int32 quantity = 7;
+  double value = 8;
+  string currency = 9;
+  string ref_id = 10;
+  google.protobuf.Timestamp timestamp = 11;
+}
+
+message TransactionEntityList {
+  repeated TransactionEntity transaction_list = 1;
+}
+
+message TransactionHistoryEntity {
+  repeated AssetTransactionEntity transaction_history = 1;
+}
+
+
+message AssetTransactionEntity {
+  string transaction_id = 1;
+  string transaction_type = 2;
+  string asset_code = 3;
+  int32 quantity = 4;
+  double total_amount = 5;
+  string status = 6;
+  double value = 7;
+  string currency = 8;
+  string ref_id = 9;
+  google.protobuf.Timestamp timestamp = 10;
+}
